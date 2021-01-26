@@ -127,7 +127,9 @@ class ShowsFragment: Fragment(), ClickInterface {
     override fun onClickItem(model: Any) {
 
         callback.pushFragment(
-            fragment = DetailShowFragment.newInstance(model as ShowModel)
+            fragment = DetailShowFragment.newInstance(
+                model = model as ShowModel,
+                navigationInterface = callback)
         )
     }
 }

@@ -9,6 +9,12 @@
     <string name="fragment_detail_show_number_season">Season: %s</string>
     <string name="fragment_detail_show_info">Show Info >>></string>
 
+    <!-- Episode Fragment -->
+    <string name="fragment_episode_number">Number:</string>
+    <string name="fragment_episode_season">Season:</string>
+    <string name="fragment_episode_duration">Duration:</string>
+    <string name="fragment_episode_minutes">%s minutes</string>
+
     <!-- Dialog Show Info -->
     <string name="dialog_show_info_hours">Hour:</string>
     <string name="dialog_show_info_days">Days:</string>

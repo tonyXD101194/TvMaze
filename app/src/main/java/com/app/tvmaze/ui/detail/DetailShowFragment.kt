@@ -10,10 +10,13 @@ import androidx.lifecycle.ViewModelProvider
 import com.app.tvmaze.R
 import com.app.tvmaze.adapters.seasons.SeasonAdapter
 import com.app.tvmaze.interfaces.ClickInterface
+import com.app.tvmaze.interfaces.NavigationInterface
+import com.app.tvmaze.model.episode.EpisodeModel
 import com.app.tvmaze.model.season.SeasonListModel
 import com.app.tvmaze.model.show.ShowModel
 import com.app.tvmaze.ui.content.MainActivity
 import com.app.tvmaze.ui.dialogs.ShowInfoDialog
+import com.app.tvmaze.ui.episode.EpisodeFragment
 import com.app.tvmaze.utils.alert
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_detail_show.*
@@ -22,11 +25,12 @@ class DetailShowFragment: Fragment(), ClickInterface {
 
     companion object {
 
-        fun newInstance(model: ShowModel): DetailShowFragment {
+        fun newInstance(model: ShowModel, navigationInterface: NavigationInterface): DetailShowFragment {
 
             val fragment = DetailShowFragment()
 
             fragment.model = model
+            fragment.navigationInterface = navigationInterface
 
             return fragment
         }
@@ -42,6 +46,8 @@ class DetailShowFragment: Fragment(), ClickInterface {
     private lateinit var viewModel: DetailShowViewModel
 
     private lateinit var model: ShowModel
+
+    private lateinit var navigationInterface: NavigationInterface
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -153,6 +159,10 @@ class DetailShowFragment: Fragment(), ClickInterface {
 
     override fun onClickItem(model: Any) {
 
-        // TODO open dialog
+        navigationInterface.pushFragment(
+            fragment = EpisodeFragment.newInstance(
+                episode = model as EpisodeModel
+            )
+        )
     }
 }

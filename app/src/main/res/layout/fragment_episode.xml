@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/fragmentEpisodeImageViewImage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintHeight_percent="0.35"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/fragmentEpisodeTextViewName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:padding="@dimen/default_size"
+        android:textSize="@dimen/title_show_item"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentEpisodeImageViewImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/fragmentEpisodeTextViewSummary"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/colorPrimaryDark"
+        android:gravity="top|start"
+        android:padding="@dimen/default_size"
+        android:textSize="@dimen/summary_show_item"
+        android:textColor="@color/white"
+        android:scrollHorizontally="true"
+        android:ellipsize="end"
+        app:layout_constraintHeight_percent="0.3"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentEpisodeTextViewName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/fragmentEpisodeTextViewNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/default_size"
+        android:text="@string/fragment_episode_number"
+        android:textColor="@color/textColor"
+        android:textStyle="bold"
+        android:textSize="@dimen/title_show_item"
+        android:gravity="start|center_vertical"
+        android:layout_marginTop="@dimen/default_size"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentEpisodeTextViewSummary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/fragmentEpisodeTextViewSeason"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/fragmentEpisodeTextViewNumberDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_size"
+        android:gravity="start|center_vertical"
+        android:padding="@dimen/default_size"
+        android:textColor="@color/textColor"
+        android:textSize="@dimen/title_show_item"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/fragmentEpisodeTextViewNumber"
+        app:layout_constraintBottom_toBottomOf="@+id/fragmentEpisodeTextViewNumber"
+        app:layout_constraintStart_toEndOf="@+id/fragmentEpisodeTextViewNumber"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/fragmentEpisodeTextViewSeason"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/default_size"
+        android:text="@string/fragment_episode_season"
+        android:textColor="@color/textColor"
+        android:textStyle="bold"
+        android:textSize="@dimen/title_show_item"
+        android:gravity="start|center_vertical"
+        android:layout_marginTop="@dimen/default_size"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentEpisodeTextViewNumber"
+        app:layout_constraintBottom_toTopOf="@+id/fragmentEpisodeTextViewDuration"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/fragmentEpisodeTextViewSeasonDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_size"
+        android:gravity="start|center_vertical"
+        android:padding="@dimen/default_size"
+        android:textColor="@color/textColor"
+        android:textSize="@dimen/title_show_item"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/fragmentEpisodeTextViewSeason"
+        app:layout_constraintBottom_toBottomOf="@+id/fragmentEpisodeTextViewSeason"
+        app:layout_constraintStart_toEndOf="@+id/fragmentEpisodeTextViewSeason"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/fragmentEpisodeTextViewDuration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/default_size"
+        android:text="@string/fragment_episode_duration"
+        android:textColor="@color/textColor"
+        android:textStyle="bold"
+        android:textSize="@dimen/title_show_item"
+        android:gravity="start|center_vertical"
+        android:layout_marginTop="@dimen/default_size"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentEpisodeTextViewSeason"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/fragmentEpisodeTextViewDurationDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_size"
+        android:gravity="start|center_vertical"
+        android:padding="@dimen/default_size"
+        android:textColor="@color/textColor"
+        android:textSize="@dimen/title_show_item"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/fragmentEpisodeTextViewDuration"
+        app:layout_constraintBottom_toBottomOf="@+id/fragmentEpisodeTextViewDuration"
+        app:layout_constraintStart_toEndOf="@+id/fragmentEpisodeTextViewDuration"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
