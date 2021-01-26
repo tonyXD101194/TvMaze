@@ -61,8 +61,7 @@ class ShowModel (
     var summary: String = "",
 
     @SerializedName("updated")
-    var updated: Long = -1
+    var updated: Long = -1,
 
-//    @SerializedName("_links")
-//    var links: String = ""// TODO create object
+    var isFavorite: Boolean = false
 )

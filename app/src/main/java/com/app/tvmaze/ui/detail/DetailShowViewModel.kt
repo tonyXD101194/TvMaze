@@ -9,6 +9,7 @@ import com.app.tvmaze.interfaces.ApiServiceInterface
 import com.app.tvmaze.model.episode.EpisodeModel
 import com.app.tvmaze.model.season.SeasonListModel
 import com.app.tvmaze.model.season.SeasonModel
+import com.app.tvmaze.repository.FollowRepository
 import com.app.tvmaze.utils.ApiService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -23,6 +24,8 @@ class DetailShowViewModel(application: Application): AndroidViewModel(applicatio
 
         ApiService.getApiService().create(ApiServiceInterface::class.java)
     }
+
+    private val repository: FollowRepository = FollowRepository(application)
 
     // region Message Info
 
@@ -119,6 +122,17 @@ class DetailShowViewModel(application: Application): AndroidViewModel(applicatio
 
                 }
             })
+        }
+    }
+
+    fun setShowFavorite(idShow: Int, isFavorite: Boolean) {
+
+        GlobalScope.launch(Dispatchers.IO) {
+
+            repository.setEpisodeFollowed(
+                id = idShow,
+                isFavorite = isFavorite
+            )
         }
     }
 

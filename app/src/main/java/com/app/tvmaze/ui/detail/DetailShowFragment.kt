@@ -90,6 +90,24 @@ class DetailShowFragment: Fragment(), ClickInterface {
 
             dialogInfo.show(childFragmentManager, ShowInfoDialog.TAG_SHOW_INFO)
         }
+
+        this.fragmentDetailShowImageViewFavorite.setOnClickListener {
+
+            if (model.isFavorite) {
+
+                model.isFavorite = false
+                this.fragmentDetailShowImageViewFavorite.setImageResource(R.drawable.ic_favorite_border_white_24dp)
+            } else {
+
+                model.isFavorite = true
+                this.fragmentDetailShowImageViewFavorite.setImageResource(R.drawable.ic_favorite_white_24dp)
+            }
+
+            viewModel.setShowFavorite(
+                idShow = model.id,
+                isFavorite = model.isFavorite
+            )
+        }
     }
 
     private fun initializeObservers() {
@@ -130,6 +148,14 @@ class DetailShowFragment: Fragment(), ClickInterface {
 
         Picasso.with(requireContext()).load(model.image.original)
             .into(this.fragmentDetailShowImageViewImage)
+
+        if (model.isFavorite) {
+
+            this.fragmentDetailShowImageViewFavorite.setImageResource(R.drawable.ic_favorite_white_24dp)
+        } else {
+
+            this.fragmentDetailShowImageViewFavorite.setImageResource(R.drawable.ic_favorite_border_white_24dp)
+        }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             this.fragmentDetailShowTextViewSummary.text = Html.fromHtml(model.summary, Html.FROM_HTML_MODE_COMPACT)

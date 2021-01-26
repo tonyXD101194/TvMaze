@@ -11,13 +11,14 @@ import com.app.tvmaze.R
 import com.app.tvmaze.adapters.shows.ShowsAdapter
 import com.app.tvmaze.interfaces.ClickInterface
 import com.app.tvmaze.interfaces.NavigationInterface
+import com.app.tvmaze.interfaces.room.FollowInterface
 import com.app.tvmaze.model.show.ShowModel
 import com.app.tvmaze.ui.content.MainActivity
 import com.app.tvmaze.ui.detail.DetailShowFragment
 import com.app.tvmaze.utils.alert
 import kotlinx.android.synthetic.main.fragment_shows.*
 
-class ShowsFragment: Fragment(), ClickInterface {
+class ShowsFragment: Fragment(), ClickInterface, FollowInterface {
 
     companion object {
 
@@ -108,7 +109,8 @@ class ShowsFragment: Fragment(), ClickInterface {
 
         this.fragmentShowsRecyclerViewShows.adapter = ShowsAdapter(
             list = list,
-            callback = this
+            callback = this,
+            followInterface = this
         )
     }
 
@@ -130,6 +132,19 @@ class ShowsFragment: Fragment(), ClickInterface {
             fragment = DetailShowFragment.newInstance(
                 model = model as ShowModel,
                 navigationInterface = callback)
+        )
+    }
+
+    override fun onClickFavoriteShow(index: Int, id: Int, isFavorite: Boolean) {
+
+        (this.fragmentShowsRecyclerViewShows.adapter as ShowsAdapter).setItemChange(
+            index = index,
+            isFavorite = isFavorite
+        )
+
+        this.viewModel.setFavorite(
+            id = id,
+            isFavorite = isFavorite
         )
     }
 }

@@ -6,7 +6,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.app.tvmaze.R
 import com.app.tvmaze.interfaces.ApiServiceInterface
+import com.app.tvmaze.model.room.FollowSeasonModel
 import com.app.tvmaze.model.show.ShowModel
+import com.app.tvmaze.repository.FollowRepository
 import com.app.tvmaze.utils.ApiService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -21,6 +23,8 @@ class ShowsViewModel(application: Application): AndroidViewModel(application) {
 
         ApiService.getApiService().create(ApiServiceInterface::class.java)
     }
+
+    private val repository: FollowRepository = FollowRepository(application)
 
     // region Message Info
 
@@ -58,7 +62,14 @@ class ShowsViewModel(application: Application): AndroidViewModel(application) {
                     response: Response<List<ShowModel>>?
                 ) {
 
-                    listMutable.postValue(response?.body())
+                    val list = response?.body()
+
+                    if (!list.isNullOrEmpty()) {
+
+                        checkIfShowIsFavorite(
+                            list = list
+                        )
+                    }
                 }
 
                 override fun onFailure(call: Call<List<ShowModel>>?, t: Throwable?) {
@@ -66,6 +77,44 @@ class ShowsViewModel(application: Application): AndroidViewModel(application) {
                     messageIntMutable.postValue(R.string.error_service)
                 }
             })
+        }
+    }
+
+    private fun checkIfShowIsFavorite(list: List<ShowModel>) {
+
+        GlobalScope.launch(Dispatchers.IO) {
+
+            list.forEach {
+
+                var isFavorite = repository.isEpisodeFollowed(it.id)
+
+                if (isFavorite == null) {
+
+                    isFavorite = false
+                }
+
+                repository.insertFollow(
+                    follow = FollowSeasonModel(
+                        id = it.id,
+                        favorite = isFavorite
+                    )
+                )
+
+                it.isFavorite = isFavorite
+            }
+
+            listMutable.postValue(list)
+        }
+    }
+
+    fun setFavorite(id: Int, isFavorite: Boolean) {
+
+        GlobalScope.launch(Dispatchers.IO) {
+
+            repository.setEpisodeFollowed(
+                id = id,
+                isFavorite = isFavorite
+            )
         }
     }
 
