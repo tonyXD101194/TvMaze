@@ -3,9 +3,7 @@ package com.app.tvmaze.ui.detail
 import android.os.Build
 import android.os.Bundle
 import android.text.Html
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -14,10 +12,11 @@ import com.app.tvmaze.adapters.seasons.SeasonAdapter
 import com.app.tvmaze.interfaces.ClickInterface
 import com.app.tvmaze.model.season.SeasonListModel
 import com.app.tvmaze.model.show.ShowModel
+import com.app.tvmaze.ui.content.MainActivity
+import com.app.tvmaze.ui.dialogs.ShowInfoDialog
 import com.app.tvmaze.utils.alert
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_detail_show.*
-import java.lang.StringBuilder
 
 class DetailShowFragment: Fragment(), ClickInterface {
 
@@ -33,9 +32,22 @@ class DetailShowFragment: Fragment(), ClickInterface {
         }
     }
 
+    private val dialogInfo: ShowInfoDialog by lazy {
+
+        ShowInfoDialog.newInstance(
+            show = model
+        )
+    }
+
     private lateinit var viewModel: DetailShowViewModel
 
     private lateinit var model: ShowModel
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        this.setHasOptionsMenu(true)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,6 +57,8 @@ class DetailShowFragment: Fragment(), ClickInterface {
 
         viewModel =
             ViewModelProvider(this).get(DetailShowViewModel::class.java)
+
+        (requireActivity() as MainActivity).supportActionBar?.title = model.name
 
         return inflater.inflate(R.layout.fragment_detail_show, container, false)
     }
@@ -57,9 +71,19 @@ class DetailShowFragment: Fragment(), ClickInterface {
         this.initializeObservers()
     }
 
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        super.onPrepareOptionsMenu(menu)
+
+        val menuItem = menu.findItem(R.id.action_search)
+        menuItem.isVisible = false
+    }
+
     private fun initializeListeners() {
 
+        this.fragmentDetailShowButtonInfo.setOnClickListener {
 
+            dialogInfo.show(childFragmentManager, ShowInfoDialog.TAG_SHOW_INFO)
+        }
     }
 
     private fun initializeObservers() {
@@ -72,12 +96,16 @@ class DetailShowFragment: Fragment(), ClickInterface {
 
             if (it.isNotEmpty()) {
 
+                this.fragmentDetailShowRecyclerViewEpisodes.visibility = View.VISIBLE
+                this.fragmentDetailShowTextViewEpisodesError.visibility = View.GONE
+
                 this.initializeAdapter(
                     list = it
                 )
             } else {
 
-
+                this.fragmentDetailShowRecyclerViewEpisodes.visibility = View.GONE
+                this.fragmentDetailShowTextViewEpisodesError.visibility = View.VISIBLE
             }
         })
 
@@ -97,21 +125,22 @@ class DetailShowFragment: Fragment(), ClickInterface {
         Picasso.with(requireContext()).load(model.image.original)
             .into(this.fragmentDetailShowImageViewImage)
 
-        val append = StringBuilder()
-
-        append.append(this.fragmentDetailShowTextViewDays.text)
-        append.append(" ")
-        append.append(model.schedule.days.joinToString(", "))
-
-        this.fragmentDetailShowTextViewDays.text = append.toString()
-        this.fragmentDetailShowTextViewHour.text = model.schedule.time
-        this.fragmentDetailShowTextViewGender.text = model.genres.joinToString(", ")
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             this.fragmentDetailShowTextViewSummary.text = Html.fromHtml(model.summary, Html.FROM_HTML_MODE_COMPACT)
         } else {
             this.fragmentDetailShowTextViewSummary.text = Html.fromHtml(model.summary)
         }
+
+        this.fragmentDetailShowTextViewSummary.viewTreeObserver.addOnGlobalLayoutListener(object: ViewTreeObserver.OnGlobalLayoutListener {
+
+            override fun onGlobalLayout() {
+
+                val maxLines = fragmentDetailShowTextViewSummary.height / fragmentDetailShowTextViewSummary.lineHeight
+                fragmentDetailShowTextViewSummary.maxLines = maxLines - 1
+
+                fragmentDetailShowTextViewSummary.viewTreeObserver.removeOnGlobalLayoutListener(this)
+            }
+        })
     }
 
     private fun initializeAdapter(list: List<SeasonListModel>) {

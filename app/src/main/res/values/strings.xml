@@ -5,12 +5,16 @@
     <string name="main_activity_search_hint">Type your show</string>
 
     <!-- Detail Show Fragment -->
-    <string name="fragment_detail_show_days">Days:</string>
-    <string name="fragment_detail_show_hours">Hour:</string>
-    <string name="fragment_detail_show_gender">Gender:</string>
-    <string name="fragment_detail_show_summary">Summary:</string>
     <string name="fragment_detail_show_episodes">Episodes:</string>
     <string name="fragment_detail_show_number_season">Season: %s</string>
+    <string name="fragment_detail_show_info">Show Info >>></string>
+
+    <!-- Dialog Show Info -->
+    <string name="dialog_show_info_hours">Hour:</string>
+    <string name="dialog_show_info_days">Days:</string>
+    <string name="dialog_show_info_gender">Genres:</string>
+    <string name="dialog_show_info_site">Official website:</string>
+    <string name="empty_seasons_error">Something wrong happened trying to load seasons</string>
 
     <!-- Menu Actions -->
     <string name="menu_search">Search</string>

@@ -51,16 +51,16 @@ class SeasonViewHolder(
 
             val inflater = view.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
-            val textViewEpisode: View = inflater.inflate(R.layout.item_episode, null)
+            val viewEpisode: View = inflater.inflate(R.layout.item_episode, null)
 
-            (textViewEpisode.itemEpisodeTextViewName as TextView).text = item.name
+            (viewEpisode.itemEpisodeTextViewName as TextView).text = item.name
 
-            textViewEpisode.setOnClickListener {
+            viewEpisode.setOnClickListener {
 
                 callback.onClickItem(item)
             }
 
-            view.itemSeasonsLinearLayoutEpisodes.addView(textViewEpisode)
+            view.itemSeasonsLinearLayoutEpisodes.addView(viewEpisode)
         }
     }
 }

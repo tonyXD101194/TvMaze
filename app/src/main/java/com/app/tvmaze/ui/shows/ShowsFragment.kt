@@ -12,6 +12,7 @@ import com.app.tvmaze.adapters.shows.ShowsAdapter
 import com.app.tvmaze.interfaces.ClickInterface
 import com.app.tvmaze.interfaces.NavigationInterface
 import com.app.tvmaze.model.show.ShowModel
+import com.app.tvmaze.ui.content.MainActivity
 import com.app.tvmaze.ui.detail.DetailShowFragment
 import com.app.tvmaze.utils.alert
 import kotlinx.android.synthetic.main.fragment_shows.*
@@ -42,6 +43,8 @@ class ShowsFragment: Fragment(), ClickInterface {
 
         viewModel =
             ViewModelProvider(this).get(ShowsViewModel::class.java)
+
+        (requireActivity() as MainActivity).supportActionBar?.title = getString(R.string.app_name)
 
         return inflater.inflate(R.layout.fragment_shows, container, false)
     }

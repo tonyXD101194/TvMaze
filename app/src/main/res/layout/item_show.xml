@@ -3,10 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white"
-    android:layout_marginTop="@dimen/default_size"
-    android:layout_marginBottom="@dimen/default_size"
-    android:padding="@dimen/default_size_x2">
+    android:background="@color/backgroundItem"
+    android:layout_margin="@dimen/default_size">
 
     <ImageView
         android:id="@+id/itemShowImageViewShow"
@@ -16,8 +14,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/itemShowTextViewNameShow"
-        android:src="@drawable/ic_launcher_background"/>
+        app:layout_constraintEnd_toStartOf="@+id/itemShowTextViewNameShow"/>
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/itemShowTextViewNameShow"
@@ -25,6 +22,8 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/default_size"
         android:gravity="center"
+        android:textSize="@dimen/title_show_item"
+        android:textColor="@color/white"
         app:layout_constraintTop_toTopOf="@+id/itemShowImageViewShow"
         app:layout_constraintBottom_toBottomOf="@+id/itemShowImageViewShow"
         app:layout_constraintStart_toEndOf="@+id/itemShowImageViewShow"

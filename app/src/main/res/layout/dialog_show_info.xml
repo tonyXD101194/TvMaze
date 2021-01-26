@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background"
+    android:padding="@dimen/default_size_x2">
+
+    <ImageView
+        android:id="@+id/dialogShowInfoImageViewClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/default_size"
+        android:src="@drawable/ic_close_black_24dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/dialogShowInfoTextViewDays"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/default_size"
+        android:text="@string/dialog_show_info_days"
+        android:textColor="@color/textColor"
+        android:textStyle="bold"
+        android:textSize="@dimen/title_show_item"
+        android:layout_marginTop="@dimen/default_size"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/dialogShowInfoTextViewDaysDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_size"
+        android:gravity="start"
+        android:padding="@dimen/default_size"
+        android:textColor="@color/textColor"
+        android:textSize="@dimen/title_show_item"
+        app:layout_constraintEnd_toStartOf="@+id/dialogShowInfoImageViewClose"
+        app:layout_constraintStart_toEndOf="@+id/dialogShowInfoTextViewDays"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/dialogShowInfoTextViewHour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/default_size"
+        android:text="@string/dialog_show_info_hours"
+        android:textColor="@color/textColor"
+        android:textStyle="bold"
+        android:textSize="@dimen/title_show_item"
+        android:layout_marginTop="@dimen/default_size"
+        app:layout_constraintTop_toBottomOf="@+id/dialogShowInfoTextViewDays"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/dialogShowInfoTextViewHourDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_size"
+        android:gravity="start"
+        android:padding="@dimen/default_size"
+        android:textColor="@color/textColor"
+        android:textSize="@dimen/title_show_item"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/dialogShowInfoTextViewHour"
+        app:layout_constraintTop_toBottomOf="@+id/dialogShowInfoTextViewDays" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/dialogShowInfoTextViewGender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/default_size"
+        android:text="@string/dialog_show_info_gender"
+        android:textColor="@color/textColor"
+        android:textStyle="bold"
+        android:textSize="@dimen/title_show_item"
+        android:layout_marginTop="@dimen/default_size"
+        app:layout_constraintTop_toBottomOf="@+id/dialogShowInfoTextViewHour"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/dialogShowInfoTextViewGenderDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_size"
+        android:gravity="start"
+        android:padding="@dimen/default_size"
+        android:textColor="@color/textColor"
+        android:textSize="@dimen/title_show_item"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/dialogShowInfoTextViewGender"
+        app:layout_constraintTop_toBottomOf="@+id/dialogShowInfoTextViewHourDescription" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/dialogShowInfoTextViewSite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/default_size"
+        android:text="@string/dialog_show_info_site"
+        android:textColor="@color/textColor"
+        android:textStyle="bold"
+        android:textSize="@dimen/title_show_item"
+        android:layout_marginTop="@dimen/default_size_x2"
+        app:layout_constraintTop_toBottomOf="@+id/dialogShowInfoTextViewGender"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/dialogShowInfoTextViewSiteDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_size"
+        android:gravity="start"
+        android:padding="@dimen/default_size"
+        android:textColor="@color/textLink"
+        android:textSize="@dimen/title_show_item"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/dialogShowInfoTextViewSite"
+        app:layout_constraintTop_toBottomOf="@+id/dialogShowInfoTextViewGenderDescription" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

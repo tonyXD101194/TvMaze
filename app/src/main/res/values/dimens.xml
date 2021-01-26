@@ -8,4 +8,8 @@
     <dimen name="default_size_x6">48dp</dimen>
     <dimen name="default_size_x7">56dp</dimen>
     <dimen name="default_size_x8">64dp</dimen>
+
+    <!-- Combos -->
+    <dimen name="title_show_item">18sp</dimen>
+    <dimen name="summary_show_item">16sp</dimen>
 </resources>
