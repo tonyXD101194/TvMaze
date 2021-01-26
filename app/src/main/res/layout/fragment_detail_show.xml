@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/fragmentDetailShowImageViewImage"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/fragmentDetailShowTextViewName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        app:layout_constraintTop_toTopOf="@+id/fragmentDetailShowImageViewImage"
+        app:layout_constraintBottom_toBottomOf="@+id/fragmentDetailShowImageViewImage"
+        app:layout_constraintStart_toStartOf="@+id/fragmentDetailShowImageViewImage"
+        app:layout_constraintEnd_toEndOf="@+id/fragmentDetailShowImageViewImage"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/fragmentDetailShowTextViewDays"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/default_size"
+        android:text="@string/fragment_detail_show_days"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentDetailShowImageViewImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/fragmentDetailShowTextViewHour"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/default_size"
+        android:text="@string/fragment_detail_show_hours"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentDetailShowTextViewDays"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/fragmentDetailShowTextViewGender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/default_size"
+        android:text="@string/fragment_detail_show_gender"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentDetailShowTextViewHour"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/fragmentDetailShowTextViewSummary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/default_size"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentDetailShowTextViewGender"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/fragmentDetailShowRecyclerViewEpisodes"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        tools:listitem="@layout/item_seasons"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentDetailShowTextViewSummary" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

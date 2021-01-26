@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="default_size">8dp</dimen>
+    <dimen name="default_size_x2">16dp</dimen>
+    <dimen name="default_size_x3">24dp</dimen>
+    <dimen name="default_size_x4">32dp</dimen>
+    <dimen name="default_size_x5">40dp</dimen>
+    <dimen name="default_size_x6">48dp</dimen>
+    <dimen name="default_size_x7">56dp</dimen>
+    <dimen name="default_size_x8">64dp</dimen>
+</resources>
