@@ -1,4 +1,4 @@
-package com.app.tvmaze.model.show
+package com.app.tvmaze.model
 
 import com.google.gson.annotations.SerializedName
 

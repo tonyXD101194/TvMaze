@@ -32,10 +32,6 @@ class ShowsViewModel(application: Application): AndroidViewModel(application) {
 
     val message: LiveData<Int> = this.messageIntMutable
 
-//    private val messageStringMutable: MutableLiveData<String> = MutableLiveData()
-//
-//    val messageString: LiveData<String> = this.messageStringMutable
-
     // endregion
 
 
@@ -165,6 +161,8 @@ class ShowsViewModel(application: Application): AndroidViewModel(application) {
                     listTemporal.add(it)
                 }
             }
+
+            listTemporal.sortBy { it.name }
 
             listFavoriteMutable.postValue(listTemporal)
         }

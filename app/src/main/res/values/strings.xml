@@ -19,6 +19,11 @@
     <string name="fragment_favorite_title">Favorite Shows</string>
     <string name="fragment_favorite_list_empty">No favorite shows added yet</string>
 
+    <!-- People Fragment -->
+    <string name="fragment_people_title">People</string>
+    <string name="fragment_people_empty_list">No people found</string>
+    <string name="fragment_people_hint_search">Type a people to search</string>
+
     <!-- Dialog Show Info -->
     <string name="dialog_show_info_hours">Hour:</string>
     <string name="dialog_show_info_days">Days:</string>

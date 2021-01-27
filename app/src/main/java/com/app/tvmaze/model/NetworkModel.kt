@@ -1,6 +1,5 @@
 package com.app.tvmaze.model
 
-import com.app.tvmaze.model.show.CountryModel
 import com.google.gson.annotations.SerializedName
 
 class NetworkModel (

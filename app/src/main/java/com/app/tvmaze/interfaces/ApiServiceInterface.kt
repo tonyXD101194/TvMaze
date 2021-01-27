@@ -1,6 +1,7 @@
 package com.app.tvmaze.interfaces
 
 import com.app.tvmaze.model.episode.EpisodeModel
+import com.app.tvmaze.model.people.PeopleModel
 import com.app.tvmaze.model.season.SeasonModel
 import com.app.tvmaze.model.show.ShowModel
 import retrofit2.Call
@@ -23,6 +24,9 @@ interface ApiServiceInterface {
 
     @GET("/seasons/{id}/episodes")
     fun getEpisodesBySeason(@Path("id") id: Int): Call<List<EpisodeModel>>
+
+    @GET("/search/people")
+    fun getPeopleByName(@Query("q") name: String): Call<List<PeopleModel>>
 
     // endregion
 }

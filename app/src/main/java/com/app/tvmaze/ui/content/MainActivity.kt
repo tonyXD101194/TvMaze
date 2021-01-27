@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.app.tvmaze.R
 import com.app.tvmaze.interfaces.NavigationInterface
+import com.app.tvmaze.ui.people.PeopleFragment
 import com.app.tvmaze.ui.shows.ShowsFragment
 
 
@@ -17,6 +18,11 @@ class MainActivity : AppCompatActivity(), NavigationInterface {
         ShowsFragment.newInstance(
             callback = this
         )
+    }
+
+    private val peopleFragment: PeopleFragment by lazy {
+
+        PeopleFragment.newInstance()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,7 +62,11 @@ class MainActivity : AppCompatActivity(), NavigationInterface {
 
             R.id.action_people -> {
 
-                return false
+                pushFragment(
+                    fragment = peopleFragment
+                )
+
+                return true
             }
 
             else -> return super.onOptionsItemSelected(item)
