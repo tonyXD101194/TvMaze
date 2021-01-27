@@ -22,7 +22,9 @@ class MainActivity : AppCompatActivity(), NavigationInterface {
 
     private val peopleFragment: PeopleFragment by lazy {
 
-        PeopleFragment.newInstance()
+        PeopleFragment.newInstance(
+            navigationInterface = this
+        )
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

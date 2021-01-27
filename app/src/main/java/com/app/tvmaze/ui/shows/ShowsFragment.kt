@@ -15,6 +15,7 @@ import com.app.tvmaze.interfaces.FollowInterface
 import com.app.tvmaze.model.show.ShowModel
 import com.app.tvmaze.ui.content.MainActivity
 import com.app.tvmaze.ui.detail.DetailShowFragment
+import com.app.tvmaze.ui.dialogs.LoadingDialog
 import com.app.tvmaze.ui.favorite.FavoriteShowFragment
 import com.app.tvmaze.utils.alert
 import kotlinx.android.synthetic.main.fragment_shows.*
@@ -41,6 +42,11 @@ class ShowsFragment: Fragment(), ClickInterface,
     private lateinit var list: List<ShowModel>
 
     private var canGoToFavorite: Boolean = false
+
+    private val loadingDialog: LoadingDialog by lazy {
+
+        LoadingDialog.newInstance()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,6 +76,8 @@ class ShowsFragment: Fragment(), ClickInterface,
 
     private fun initializeObservers() {
 
+        this.loadingDialog.show(childFragmentManager, LoadingDialog.DIALOG_LOADING_TAG)
+
         this.viewModel.getShows()
 
         this.viewModel.list.observe(viewLifecycleOwner, Observer {
@@ -84,6 +92,11 @@ class ShowsFragment: Fragment(), ClickInterface,
                 this.initializeAdapters(
                     list = it
                 )
+            }
+
+            if (this.loadingDialog.isVisible) {
+
+                this.loadingDialog.dismiss()
             }
         })
 
@@ -120,6 +133,11 @@ class ShowsFragment: Fragment(), ClickInterface,
         })
 
         this.viewModel.message.observe(viewLifecycleOwner, Observer {
+
+            if (this.loadingDialog.isVisible) {
+
+                this.loadingDialog.dismiss()
+            }
 
             requireActivity().alert(
                 messageStringId = it,

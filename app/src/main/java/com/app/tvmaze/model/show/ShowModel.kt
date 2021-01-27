@@ -48,14 +48,11 @@ class ShowModel (
     @SerializedName("network")
     var network: NetworkModel = NetworkModel(),
 
-    @SerializedName("webChannel")
-    var webChannel: NetworkModel = NetworkModel(),
-
     @SerializedName("externals")
     var externals: ExternalsShowModel = ExternalsShowModel(),
 
     @SerializedName("image")
-    var image: ImageModel = ImageModel(),
+    var image: ImageModel? = null,
 
     @SerializedName("summary")
     var summary: String = "",

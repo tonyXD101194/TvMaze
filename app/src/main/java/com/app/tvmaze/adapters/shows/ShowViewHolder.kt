@@ -34,8 +34,11 @@ class ShowViewHolder(
 
         view.itemShowTextViewNameShow.text = model.name
 
-        Picasso.with(view.context).load(model.image.medium)
-            .into(view.itemShowImageViewShow)
+        if (model.image != null) {
+
+            Picasso.with(view.context).load(model.image!!.medium)
+                .into(view.itemShowImageViewShow)
+        }
 
         view.setOnClickListener {
 

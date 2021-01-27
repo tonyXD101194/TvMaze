@@ -13,8 +13,10 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.app.tvmaze.R
 import com.app.tvmaze.adapters.people.PeopleAdapter
 import com.app.tvmaze.interfaces.ClickInterface
+import com.app.tvmaze.interfaces.NavigationInterface
 import com.app.tvmaze.model.people.PeopleModel
 import com.app.tvmaze.ui.content.MainActivity
+import com.app.tvmaze.ui.detailpeople.PeopleDetailFragment
 import com.app.tvmaze.utils.alert
 import kotlinx.android.synthetic.main.fragment_people.*
 
@@ -24,10 +26,19 @@ class PeopleFragment: Fragment(), ClickInterface {
 
         private const val ROWS_CATEGORIES = 3
 
-        fun newInstance(): PeopleFragment = PeopleFragment()
+        fun newInstance(navigationInterface: NavigationInterface): PeopleFragment {
+
+            val fragment = PeopleFragment()
+
+            fragment.navigationInterface = navigationInterface
+
+            return fragment
+        }
     }
 
     private lateinit var viewModel: PeopleViewModel
+
+    private lateinit var navigationInterface: NavigationInterface
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -128,6 +139,11 @@ class PeopleFragment: Fragment(), ClickInterface {
     }
 
     override fun onClickItem(model: Any) {
-        // TODO
+
+        navigationInterface.pushFragment(
+            fragment = PeopleDetailFragment.newInstance(
+                peopleModel = model as PeopleModel
+            )
+        )
     }
 }

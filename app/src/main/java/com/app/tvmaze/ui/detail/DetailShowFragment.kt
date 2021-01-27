@@ -151,7 +151,7 @@ class DetailShowFragment: Fragment(), ClickInterface {
 
         this.fragmentDetailShowTextViewName.text = model.name
 
-        Picasso.with(requireContext()).load(model.image.original)
+        Picasso.with(requireContext()).load(model.image!!.original)
             .into(this.fragmentDetailShowImageViewImage)
 
         if (model.isFavorite) {
@@ -163,8 +163,10 @@ class DetailShowFragment: Fragment(), ClickInterface {
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+
             this.fragmentDetailShowTextViewSummary.text = Html.fromHtml(model.summary, Html.FROM_HTML_MODE_COMPACT)
         } else {
+
             this.fragmentDetailShowTextViewSummary.text = Html.fromHtml(model.summary)
         }
 

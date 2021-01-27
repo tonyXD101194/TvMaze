@@ -24,12 +24,19 @@
     <string name="fragment_people_empty_list">No people found</string>
     <string name="fragment_people_hint_search">Type a people to search</string>
 
+    <!-- People Detail Fragment -->
+    <string name="fragment_people_detail_show_title">Shows</string>
+    <string name="fragment_people_detail_shows_empty">No shows to show</string>
+
     <!-- Dialog Show Info -->
     <string name="dialog_show_info_hours">Hour:</string>
     <string name="dialog_show_info_days">Days:</string>
     <string name="dialog_show_info_gender">Genres:</string>
     <string name="dialog_show_info_site">Official website:</string>
     <string name="empty_seasons_error">Something wrong happened trying to load seasons</string>
+
+    <!-- Dialog Loading -->
+    <string name="dialog_loading_title">Loading...</string>
 
     <!-- Menu Actions -->
     <string name="menu_search">Search</string>

@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import com.app.tvmaze.R
 import com.app.tvmaze.interfaces.ApiServiceInterface
 import com.app.tvmaze.model.room.FollowSeasonModel
+import com.app.tvmaze.model.search.SearchModel
 import com.app.tvmaze.model.show.ShowModel
 import com.app.tvmaze.repository.FollowRepository
 import com.app.tvmaze.utils.ApiService
@@ -118,21 +119,33 @@ class ShowsViewModel(application: Application): AndroidViewModel(application) {
 
         GlobalScope.launch(Dispatchers.IO) {
 
-            val call: Call<List<ShowModel>> = service.getShowsByQuery(
+            val call: Call<List<SearchModel>> = service.getShowsByQuery(
                 show = name
             )
 
-            call.enqueue(object: Callback<List<ShowModel>> {
+            call.enqueue(object: Callback<List<SearchModel>> {
 
                 override fun onResponse(
-                    call: Call<List<ShowModel>>?,
-                    response: Response<List<ShowModel>>?
+                    call: Call<List<SearchModel>>?,
+                    response: Response<List<SearchModel>>?
                 ) {
 
-                    listSearchMutable.postValue(response?.body())
+                    val listSearch = response?.body()
+
+                    if (listSearch != null) {
+
+                        val listTemporal: MutableList<ShowModel> = mutableListOf()
+
+                        listSearch.forEach {
+
+                            listTemporal.add(it.show)
+                        }
+
+                        listSearchMutable.postValue(listTemporal)
+                    }
                 }
 
-                override fun onFailure(call: Call<List<ShowModel>>?, t: Throwable?) {
+                override fun onFailure(call: Call<List<SearchModel>>?, t: Throwable?) {
 
                 }
             })
