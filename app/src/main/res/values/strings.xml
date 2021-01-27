@@ -15,6 +15,10 @@
     <string name="fragment_episode_duration">Duration:</string>
     <string name="fragment_episode_minutes">%s minutes</string>
 
+    <!-- Favorite Fragment -->
+    <string name="fragment_favorite_title">Favorite Shows</string>
+    <string name="fragment_favorite_list_empty">No favorite shows added yet</string>
+
     <!-- Dialog Show Info -->
     <string name="dialog_show_info_hours">Hour:</string>
     <string name="dialog_show_info_days">Days:</string>
@@ -24,6 +28,8 @@
 
     <!-- Menu Actions -->
     <string name="menu_search">Search</string>
+    <string name="menu_favorite">Favorite</string>
+    <string name="menu_people">People</string>
 
     <!-- Generic Actions -->
     <string name="accept_button">Accept</string>

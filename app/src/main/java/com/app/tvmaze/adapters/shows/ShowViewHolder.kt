@@ -4,7 +4,7 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.app.tvmaze.R
 import com.app.tvmaze.interfaces.ClickInterface
-import com.app.tvmaze.interfaces.room.FollowInterface
+import com.app.tvmaze.interfaces.FollowInterface
 import com.app.tvmaze.model.show.ShowModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_show.view.*
@@ -12,16 +12,24 @@ import kotlinx.android.synthetic.main.item_show.view.*
 class ShowViewHolder(
     val view: View,
     private val callback: ClickInterface,
-    private val followInterface: FollowInterface): RecyclerView.ViewHolder(view) {
+    private val followInterface: FollowInterface,
+    private val fromFavorite: Boolean
+): RecyclerView.ViewHolder(view) {
 
     fun bind(model: ShowModel) {
 
-        if (model.isFavorite) {
+        if (fromFavorite) {
 
-            view.itemShowImageViewFavorite.setImageResource(R.drawable.ic_favorite_white_24dp)
+            view.itemShowImageViewFavorite.visibility = View.GONE
         } else {
 
-            view.itemShowImageViewFavorite.setImageResource(R.drawable.ic_favorite_border_white_24dp)
+            if (model.isFavorite) {
+
+                view.itemShowImageViewFavorite.setImageResource(R.drawable.ic_favorite_white_24dp)
+            } else {
+
+                view.itemShowImageViewFavorite.setImageResource(R.drawable.ic_favorite_border_white_24dp)
+            }
         }
 
         view.itemShowTextViewNameShow.text = model.name

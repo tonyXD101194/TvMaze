@@ -15,7 +15,7 @@ interface ApiServiceInterface {
     @GET("/shows?page=1")
     fun getShows(): Call<List<ShowModel>>
 
-    @GET("/shows")
+    @GET("/singlesearch/shows")
     fun getShowsByQuery(@Query("q") show: String): Call<List<ShowModel>>
 
     @GET("/shows/{id}/seasons")

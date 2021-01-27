@@ -38,6 +38,31 @@ class MainActivity : AppCompatActivity(), NavigationInterface {
         return true
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when(item.itemId) {
+
+            R.id.action_favorite_list -> {
+
+                val fragment = supportFragmentManager.findFragmentById(R.id.activityMainFragmentContent)
+
+                if (fragment is ShowsFragment) {
+
+                    fragment.onClickFavorite()
+                }
+
+                return true
+            }
+
+            R.id.action_people -> {
+
+                return false
+            }
+
+            else -> return super.onOptionsItemSelected(item)
+        }
+    }
+
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
 
         val searchViewMenuItem: MenuItem = menu!!.findItem(R.id.action_search)

@@ -8,4 +8,16 @@
         android:icon="@drawable/ic_search_black_24dp"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/action_favorite_list"
+        android:title="@string/menu_favorite"
+        android:icon="@drawable/ic_favorite_white_24dp"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/action_people"
+        android:title="@string/menu_people"
+        android:icon="@drawable/ic_people_white_24dp"
+        app:showAsAction="always"/>
 </menu>

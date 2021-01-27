@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableTop="@drawable/ic_error_80dp"
-        android:text="@string/list_empty"
+        android:text="@string/list_empty_error"
         android:padding="@dimen/default_size_x3"
         android:gravity="center"
         app:layout_constraintTop_toTopOf="parent"

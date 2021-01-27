@@ -1,4 +1,4 @@
-package com.app.tvmaze.interfaces.room
+package com.app.tvmaze.interfaces
 
 interface FollowInterface {
 

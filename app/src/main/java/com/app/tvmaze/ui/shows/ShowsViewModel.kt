@@ -148,5 +148,27 @@ class ShowsViewModel(application: Application): AndroidViewModel(application) {
         listMutable.postValue(listMutable.value)
     }
 
+    private val listFavoriteMutable: MutableLiveData<List<ShowModel>> = MutableLiveData()
+
+    val listFavoriteParsed: LiveData<List<ShowModel>> = this.listFavoriteMutable
+
+    fun parseList(listFavorite: List<ShowModel>) {
+
+        GlobalScope.launch(Dispatchers.IO) {
+
+            val listTemporal: MutableList<ShowModel> = mutableListOf()
+
+            listFavorite.forEach {
+
+                if (it.isFavorite) {
+
+                    listTemporal.add(it)
+                }
+            }
+
+            listFavoriteMutable.postValue(listTemporal)
+        }
+    }
+
     // endregion
 }

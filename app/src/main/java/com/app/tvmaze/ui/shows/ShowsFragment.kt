@@ -11,14 +11,16 @@ import com.app.tvmaze.R
 import com.app.tvmaze.adapters.shows.ShowsAdapter
 import com.app.tvmaze.interfaces.ClickInterface
 import com.app.tvmaze.interfaces.NavigationInterface
-import com.app.tvmaze.interfaces.room.FollowInterface
+import com.app.tvmaze.interfaces.FollowInterface
 import com.app.tvmaze.model.show.ShowModel
 import com.app.tvmaze.ui.content.MainActivity
 import com.app.tvmaze.ui.detail.DetailShowFragment
+import com.app.tvmaze.ui.favorite.FavoriteShowFragment
 import com.app.tvmaze.utils.alert
 import kotlinx.android.synthetic.main.fragment_shows.*
 
-class ShowsFragment: Fragment(), ClickInterface, FollowInterface {
+class ShowsFragment: Fragment(), ClickInterface,
+    FollowInterface {
 
     companion object {
 
@@ -35,6 +37,16 @@ class ShowsFragment: Fragment(), ClickInterface, FollowInterface {
     private lateinit var viewModel: ShowsViewModel
 
     private lateinit var callback: NavigationInterface
+
+    private lateinit var list: List<ShowModel>
+
+    private var canGoToFavorite: Boolean = false
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        this.setHasOptionsMenu(true)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -53,13 +65,7 @@ class ShowsFragment: Fragment(), ClickInterface, FollowInterface {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        this.initializeListeners()
         this.initializeObservers()
-    }
-
-    private fun initializeListeners() {
-
-
     }
 
     private fun initializeObservers() {
@@ -72,6 +78,8 @@ class ShowsFragment: Fragment(), ClickInterface, FollowInterface {
 
                 this.fragmentShowsTextViewError.visibility = View.GONE
                 this.fragmentShowsRecyclerViewShows.visibility = View.VISIBLE
+
+                list = it
 
                 this.initializeAdapters(
                     list = it
@@ -96,6 +104,21 @@ class ShowsFragment: Fragment(), ClickInterface, FollowInterface {
             }
         })
 
+        this.viewModel.listFavoriteParsed.observe(viewLifecycleOwner, Observer {
+
+            if (canGoToFavorite) {
+
+                callback.pushFragment(
+                    fragment = FavoriteShowFragment.newInstance(
+                        list = it,
+                        navigationInterface = callback
+                    )
+                )
+
+                canGoToFavorite = false
+            }
+        })
+
         this.viewModel.message.observe(viewLifecycleOwner, Observer {
 
             requireActivity().alert(
@@ -110,7 +133,8 @@ class ShowsFragment: Fragment(), ClickInterface, FollowInterface {
         this.fragmentShowsRecyclerViewShows.adapter = ShowsAdapter(
             list = list,
             callback = this,
-            followInterface = this
+            followInterface = this,
+            fromFavorite = false
         )
     }
 
@@ -126,6 +150,18 @@ class ShowsFragment: Fragment(), ClickInterface, FollowInterface {
         this.viewModel.resetListCreated()
     }
 
+    fun onClickFavorite() {
+
+        if (this::list.isInitialized) {
+
+            canGoToFavorite = true
+
+            this.viewModel.parseList(
+                listFavorite = list
+            )
+        }
+    }
+
     override fun onClickItem(model: Any) {
 
         callback.pushFragment(
@@ -136,6 +172,8 @@ class ShowsFragment: Fragment(), ClickInterface, FollowInterface {
     }
 
     override fun onClickFavoriteShow(index: Int, id: Int, isFavorite: Boolean) {
+
+        list[index].isFavorite = isFavorite
 
         (this.fragmentShowsRecyclerViewShows.adapter as ShowsAdapter).setItemChange(
             index = index,

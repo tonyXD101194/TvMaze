@@ -81,7 +81,12 @@ class DetailShowFragment: Fragment(), ClickInterface {
         super.onPrepareOptionsMenu(menu)
 
         val menuItem = menu.findItem(R.id.action_search)
+        val menuItemFavorite = menu.findItem(R.id.action_favorite_list)
+        val menuItemPeople = menu.findItem(R.id.action_people)
+
         menuItem.isVisible = false
+        menuItemFavorite.isVisible = false
+        menuItemPeople.isVisible = false
     }
 
     private fun initializeListeners() {

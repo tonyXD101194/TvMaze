@@ -6,13 +6,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.app.tvmaze.R
 import com.app.tvmaze.interfaces.ClickInterface
-import com.app.tvmaze.interfaces.room.FollowInterface
+import com.app.tvmaze.interfaces.FollowInterface
 import com.app.tvmaze.model.show.ShowModel
 
 class ShowsAdapter(
     private val list: List<ShowModel>,
     private val callback: ClickInterface,
-    private val followInterface: FollowInterface
+    private val followInterface: FollowInterface,
+    private val fromFavorite: Boolean
 ): RecyclerView.Adapter<ShowViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShowViewHolder {
@@ -23,7 +24,8 @@ class ShowsAdapter(
         return ShowViewHolder(
             view = view,
             callback = callback,
-            followInterface = followInterface
+            followInterface = followInterface,
+            fromFavorite = fromFavorite
         )
     }
 
