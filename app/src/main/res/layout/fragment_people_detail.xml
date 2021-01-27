@@ -19,28 +19,22 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/itemPeopleDetailTextViewName"
+        style="@style/TitleTextViewBold"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
         android:padding="@dimen/default_size_x2"
         android:textColor="@color/white"
-        android:textSize="@dimen/title_show_item"
-        android:textStyle="bold"
         android:lines="2"
-        android:gravity="center"
         android:background="@color/colorPrimaryDark"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="@+id/fragmentPeopleDetailImageView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/itemPeopleDetailTextViewShowTitle"
+        style="@style/TitleTextViewBold"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
         android:gravity="center"
-        android:padding="@dimen/default_size"
-        android:textSize="@dimen/title_show_item"
-        android:textColor="@color/textColor"
-        android:textStyle="bold"
         android:text="@string/fragment_people_detail_show_title"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@+id/fragmentPeopleDetailImageView"
@@ -57,12 +51,9 @@
 
     <TextView
         android:id="@+id/fragmentShowsTextViewError"
+        style="@style/ErrorEmptyTextView"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:drawableTop="@drawable/ic_error_80dp"
         android:text="@string/fragment_people_empty_list"
-        android:padding="@dimen/default_size_x3"
-        android:gravity="center"
         app:layout_constraintTop_toBottomOf="@+id/line"
         app:layout_constraintStart_toEndOf="@+id/fragmentPeopleDetailImageView"
         app:layout_constraintEnd_toEndOf="parent"/>

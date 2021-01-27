@@ -22,12 +22,8 @@
 
     <TextView
         android:id="@+id/fragmentPeopleTextViewError"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/ErrorEmptyTextView"
         android:drawableTop="@drawable/ic_error_80dp"
-        android:text="@string/fragment_people_empty_list"
-        android:padding="@dimen/default_size_x3"
-        android:gravity="center"
         app:layout_constraintTop_toBottomOf="@+id/line"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

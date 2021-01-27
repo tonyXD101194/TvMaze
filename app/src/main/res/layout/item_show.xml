@@ -18,11 +18,9 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/itemShowTextViewNameShow"
+        style="@style/TitleTextView"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/default_size"
         android:gravity="center"
-        android:textSize="@dimen/title_show_item"
         android:textColor="@color/white"
         app:layout_constraintTop_toTopOf="@+id/itemShowImageViewShow"
         app:layout_constraintBottom_toBottomOf="@+id/itemShowImageViewShow"

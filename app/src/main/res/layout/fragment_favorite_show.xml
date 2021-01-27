@@ -7,12 +7,8 @@
 
     <TextView
         android:id="@+id/fragmentFavoriteShowTextViewShows"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:drawableTop="@drawable/ic_error_80dp"
+        style="@style/ErrorEmptyTextView"
         android:text="@string/fragment_favorite_list_empty"
-        android:padding="@dimen/default_size_x3"
-        android:gravity="center"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>

@@ -17,13 +17,12 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/itemPeopleTextViewName"
+        style="@style/ItemTextView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/default_size"
         android:textColor="@color/white"
-        android:textSize="@dimen/summary_show_item"
         android:lines="2"
         android:background="@color/colorPrimaryDark"
+        android:gravity="center"
         app:layout_constraintTop_toBottomOf="@+id/itemPeopleImageView"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
